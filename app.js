@@ -3,7 +3,7 @@ import userRouter from "./routes/user.js";
 import taskRouter from "./routes/task.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
-import { errorMiddleware } from "./middlewares/error.js";
+import { errorControl } from "./middlewares/error.js";
 import cors from "cors";
 
 export const app = express();
@@ -25,12 +25,12 @@ app.use(
 );
 
 // Using routes
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/task", taskRouter);
+app.use("/users", userRouter);
+app.use("/task", taskRouter);
 
 app.get("/", (req, res) => {
-  res.send("Nice working");
+  res.send("Home");
 });
 
 // Using Error Middleware
-app.use(errorMiddleware);
+app.use(errorControl);

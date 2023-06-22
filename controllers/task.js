@@ -5,11 +5,7 @@ export const newTask = async (req, res, next) => {
     try {
       const { title, description } = req.body;
   
-      await Task.create({
-        title,
-        description,
-        user: req.user,
-      });
+      await Task.create({title, description, user: req.user,});
   
       res.status(201).json({
         success: true,
